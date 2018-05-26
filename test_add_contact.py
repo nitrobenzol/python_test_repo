@@ -20,6 +20,7 @@ class test_add_contact(unittest.TestCase):
         wd.get("http://localhost/addressbook/index.php")
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -33,6 +34,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_link_text("add new").click()
 
     def adding_contact(self, wd, contact):
+        self.open_contact_creation(wd)
         # filling in contact details
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -71,6 +73,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("email3").send_keys(contact.email3)
         # submit
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.return_to_homepage(wd)
 
     def return_to_homepage(self, wd):
         wd.find_element_by_link_text("home page").click()
@@ -80,13 +83,10 @@ class test_add_contact(unittest.TestCase):
 
     def test_test_add_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.open_contact_creation(wd)
         self.adding_contact(wd, Contact("Gleb", "Sarkisov", "Igorevich", "Moscow, Veneskaya St, 23, Apt 119", "4957166231",
                             "9866662325", "123123123", "1414141414", "glebsarkisov@gmail.com", "asdasdasd@com",
                             "wdwdwdwdwdw@gmail.com"))
-        self.return_to_homepage(wd)
         self.logout(wd)
 
     def tearDown(self):
