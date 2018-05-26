@@ -16,11 +16,13 @@ class test_add_contact(unittest.TestCase):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
 
-    def open_home_page(self, wd):
+    def open_home_page(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/index.php")
 
-    def login(self, wd, username, password):
-        self.open_home_page(wd)
+    def login(self, username, password):
+        wd = self.wd
+        self.open_home_page()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -30,11 +32,13 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
 
-    def open_contact_creation(self, wd):
+    def open_contact_creation(self):
+        wd = self.wd
         wd.find_element_by_link_text("add new").click()
 
-    def adding_contact(self, wd, contact):
-        self.open_contact_creation(wd)
+    def adding_contact(self, contact):
+        wd = self.wd
+        self.open_contact_creation()
         # filling in contact details
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -73,21 +77,22 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("email3").send_keys(contact.email3)
         # submit
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-        self.return_to_homepage(wd)
+        self.return_to_homepage()
 
-    def return_to_homepage(self, wd):
+    def return_to_homepage(self):
+        wd = self.wd
         wd.find_element_by_link_text("home page").click()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element_by_link_text("Logout").click()
 
     def test_test_add_contact(self):
-        wd = self.wd
-        self.login(wd, "admin", "secret")
-        self.adding_contact(wd, Contact("Gleb", "Sarkisov", "Igorevich", "Moscow, Veneskaya St, 23, Apt 119", "4957166231",
+        self.login("admin", "secret")
+        self.adding_contact(Contact("Gleb", "Sarkisov", "Igorevich", "Moscow, Veneskaya St, 23, Apt 119", "4957166231",
                             "9866662325", "123123123", "1414141414", "glebsarkisov@gmail.com", "asdasdasd@com",
                             "wdwdwdwdwdw@gmail.com"))
-        self.logout(wd)
+        self.logout()
 
     def tearDown(self):
         self.wd.quit()
