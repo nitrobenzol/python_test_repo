@@ -1,5 +1,5 @@
 import pytest
-from fixture.application_group import Application
+from fixture.application import Application
 
 
 @pytest.fixture (scope = "session")
