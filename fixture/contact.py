@@ -143,6 +143,14 @@ class ContactHelper:
         # submit changes - home page will be opened right after automatically
         wd.find_element_by_name("update").click()
 
+    def delete_first_contact_via_profile(self):
+        wd = self.app.wd
+        # open profile
+        wd.find_element_by_xpath("//a[contains(@href,'view.php?id=')]").click()
+        # click modify
+        wd.find_element_by_name("modifiy").click()
+        # click delete - home page will be opened right after automatically
+        wd.find_element_by_xpath(".//input[@value='Delete']").click()
 
     def return_to_homepage(self):
         wd = self.app.wd
