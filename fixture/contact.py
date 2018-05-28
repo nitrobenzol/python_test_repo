@@ -50,6 +50,15 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         self.return_to_homepage()
 
+    def delete_first_contact(self):
+        wd = self.app.wd
+        # select contact
+        wd.find_element_by_name("selected[]").click()
+        # click delete button
+        wd.find_element_by_xpath("//input[@value = 'Delete']").click()
+        # submit deletion - home page will be opened right after automatically
+        wd.switch_to_alert().accept()
+
     def return_to_homepage(self):
         wd = self.app.wd
         wd.find_element_by_link_text("home page").click()
