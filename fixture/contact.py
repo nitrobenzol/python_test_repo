@@ -52,12 +52,15 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
-        # select contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_first_contact()
         # click delete button
         wd.find_element_by_xpath("//input[@value = 'Delete']").click()
         # submit deletion - home page will be opened right after automatically
         wd.switch_to_alert().accept()
+
+    def select_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
@@ -103,7 +106,7 @@ class ContactHelper:
     def edit_first_contact_via_profile(self, contact):
         wd = self.app.wd
         # open profile
-        wd.find_element_by_xpath("//a[contains(@href,'view.php?id=')]").click()
+        self.view_first_contact_profile()
         # click modify
         wd.find_element_by_name("modifiy").click()
         # filling in new contact details
@@ -145,12 +148,15 @@ class ContactHelper:
 
     def delete_first_contact_via_profile(self):
         wd = self.app.wd
-        # open profile
-        wd.find_element_by_xpath("//a[contains(@href,'view.php?id=')]").click()
+        self.view_first_contact_profile()
         # click modify
         wd.find_element_by_name("modifiy").click()
         # click delete - home page will be opened right after automatically
         wd.find_element_by_xpath(".//input[@value='Delete']").click()
+
+    def view_first_contact_profile(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//a[contains(@href,'view.php?id=')]").click()
 
     def return_to_homepage(self):
         wd = self.app.wd
