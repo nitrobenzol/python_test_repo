@@ -49,7 +49,8 @@ class ContactHelper:
 
     def open_home_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        if not (wd.current_url.endswith("/index.php") and len(wd.find_elements_by_xpath("//*[@id='MassCB']"))>0):
+            wd.find_element_by_link_text("home").click()
 
     def select_first_contact(self):
         wd = self.app.wd
@@ -67,6 +68,7 @@ class ContactHelper:
 
     def edit_first_contact_via_profile(self, contact):
         wd = self.app.wd
+        self.open_home_page()
         # open profile
         self.view_first_contact_profile()
         # click modify
@@ -77,6 +79,7 @@ class ContactHelper:
 
     def delete_first_contact_via_profile(self):
         wd = self.app.wd
+        self.open_home_page()
         self.view_first_contact_profile()
         # click modify
         wd.find_element_by_name("modifiy").click()
