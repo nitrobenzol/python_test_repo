@@ -20,7 +20,7 @@ class ContactHelper:
         self.change_field_value("firstname", contact.first_name)
         self.change_field_value("lastname", contact.last_name)
         self.change_field_value("middlename", contact.middle_name)
-        self.change_field_value("address", contact.first_name)
+        self.change_field_value("address", contact.address)
         self.change_field_value("home", contact.home_phone)
         self.change_field_value("mobile", contact.mobile_phone)
         self.change_field_value("work", contact.work_phone)
@@ -89,3 +89,8 @@ class ContactHelper:
     def return_to_homepage(self):
         wd = self.app.wd
         wd.find_element_by_link_text("home page").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_home_page()
+        return len(wd.find_elements_by_xpath("//a[contains(@href,'edit.php?id=')]"))
