@@ -67,11 +67,14 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
-    def edit_first_contact(self, contact):
+    def edit_first_contact(self):
+        self.edit_contact_by_index(0)
+
+    def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_home_page()
         # click Edit button
-        wd.find_element_by_xpath("//a[contains(@href,'edit.php?id=')]").click()
+        wd.find_elements_by_xpath("//a[contains(@href,'edit.php?id=')]")[index].click()
         self.fill_contact_form(contact)
         # submit changes - home page will be opened right after automatically
         wd.find_element_by_name("update").click()
