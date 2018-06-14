@@ -42,10 +42,13 @@ class ContactHelper:
             wd.find_element_by_name(field_name).send_keys(text)
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         # open home page
         self.open_home_page()
-        self.select_first_contact()
+        self.select_some_contact(index)
         # click delete button
         wd.find_element_by_xpath("//input[@value = 'Delete']").click()
         # submit deletion - home page will be opened right after automatically
@@ -54,12 +57,15 @@ class ContactHelper:
 
     def open_home_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith("/index.php") and len(wd.find_elements_by_xpath("//*[@id='MassCB']"))>0):
+        if not (wd.current_url.endswith("/index.php") and len(wd.find_elements_by_xpath("//*[@id='MassCB']")) > 0):
             wd.find_element_by_link_text("home").click()
 
     def select_first_contact(self):
+        self.select_some_contact(0)
+
+    def select_some_contact(self, index):
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
