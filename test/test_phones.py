@@ -7,8 +7,7 @@ def test_phones_on_home_page(app):
     assert contact_from_home_page.home_phone == clear(contact_from_edit_page.home_phone)
     assert contact_from_home_page.mobile_phone == clear(contact_from_edit_page.mobile_phone)
     assert contact_from_home_page.work_phone == clear(contact_from_edit_page.work_phone)
-    # assert contact_from_home_page.fax == contact_from_edit_page.fax - cannot insert this test, since in our app Addressbook
-    # only 3 phones are shown on contact details on the preview
+    assert contact_from_home_page.secondary_phone == clear(contact_from_edit_page.secondary_phone)
 
 
 def test_phones_on_contact_view_page(app):
@@ -17,7 +16,7 @@ def test_phones_on_contact_view_page(app):
     assert contact_from_view_page.home_phone == contact_from_edit_page.home_phone
     assert contact_from_view_page.mobile_phone == contact_from_edit_page.mobile_phone
     assert contact_from_view_page.work_phone == contact_from_edit_page.work_phone
-    # assert contact_from_view_page.fax == contact_from_edit_page.fax
+    assert contact_from_view_page.secondary_phone == contact_from_edit_page.secondary_phone
 
 
 def clear(s):

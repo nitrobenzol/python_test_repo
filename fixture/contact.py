@@ -30,7 +30,7 @@ class ContactHelper:
         self.change_field_value("home", contact.home_phone)
         self.change_field_value("mobile", contact.mobile_phone)
         self.change_field_value("work", contact.work_phone)
-        self.change_field_value("fax", contact.fax)
+        self.change_field_value("phone2", contact.secondary_phone)
         self.change_field_value("email", contact.email)
         self.change_field_value("email2", contact.email2)
         self.change_field_value("email3", contact.email3)
@@ -146,7 +146,7 @@ class ContactHelper:
                 all_phones = cells[5].text.splitlines()
                 self.contact_cache.append(Contact(last_name=last_name, first_name=first_name, id=id,
                                                   home_phone=all_phones[0], mobile_phone=all_phones[1],
-                                                  work_phone=all_phones[2]))
+                                                  work_phone=all_phones[2], secondary_phone=all_phones[3]))
         return self.contact_cache
 
     def get_contact_info_from_edit_page(self, index):
@@ -158,8 +158,9 @@ class ContactHelper:
         home_phone = wd.find_element_by_name("home").get_attribute("value")
         mobile_phone = wd.find_element_by_name("mobile").get_attribute("value")
         work_phone = wd.find_element_by_name("work").get_attribute("value")
-        fax = wd.find_element_by_name("fax").get_attribute("value")
-        return Contact(first_name=first_name, last_name=last_name, id=id, home_phone=home_phone,mobile_phone=mobile_phone, work_phone=work_phone, fax=fax)
+        secondary_phone = wd.find_element_by_name("phone2").get_attribute("value")
+        return Contact(first_name=first_name, last_name=last_name, id=id, home_phone=home_phone,
+                       mobile_phone=mobile_phone, work_phone=work_phone, secondary_phone=secondary_phone)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
@@ -168,5 +169,6 @@ class ContactHelper:
         home_phone = re.search("H: (.*)", text).group(1)
         work_phone = re.search("W: (.*)", text).group(1)
         mobile_phone = re.search("M: (.*)", text).group(1)
-        fax = re.search("F: (.*)", text).group(1)
-        return Contact(home_phone=home_phone,mobile_phone=mobile_phone, work_phone=work_phone, fax=fax)
+        secondary_phone = re.search("P: (.*)", text).group(1)
+        return Contact(home_phone=home_phone,mobile_phone=mobile_phone, work_phone=work_phone,
+                       secondary_phone=secondary_phone)
