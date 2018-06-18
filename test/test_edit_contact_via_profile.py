@@ -2,9 +2,9 @@ from model.contact import Contact
 
 
 def test_edit_first_contact_via_profile(app):
-    contact = Contact("Edited_Gleb", "Edited_Sarkisov", "Edited_Igorevich", "Edited_Moscow, Veneskaya St, 23, Apt 119", "Edited_4957166231",
-                        "Edited_9866662325", "Edited_123123123", "Edited_1414141414", "Edited_glebsarkisov@gmail.com", "Edited_asdasdasd@com",
-                        "Edited_wdwdwdwdwdw@gmail.com")
+    contact = Contact(first_name="New Gleb", last_name="New Sarkisov", middle_name="New Igorevich", address="New Moscow, Veneskaya St, 23, Apt 119", home_phone="New 4957166231",
+                        mobile_phone="New 9866662325", work_phone="New 123123123", secondary_phone="New 1414141414", email="glebsarkisov@gmail.com", email2="asdasdasd@com",
+                        email3="wdwdwdwdwdw@gmail.com")
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name="Someone"))
     old_contacts = app.contact.get_contacts_list()
