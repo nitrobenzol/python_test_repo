@@ -6,10 +6,10 @@ from model.contact import Contact
 def test_contact_info_match(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(first_name="New Gleb", last_name="New Sarkisov", middle_name="New Igorevich",
-                      address="New Moscow, Veneskaya St, 23, Apt 119", home_phone="New 4957166231",
-                      mobile_phone="New 9866662325", work_phone="New 123123123", secondary_phone="New 1414141414",
-                      email="glebsarkisov@gmail.com", email2="asdasdasd@com",
-                      email3="wdwdwdwdwdw@gmail.com"))
+                        address="New Moscow, Veneskaya St, 23, Apt 119", home_phone="New 4957166231",
+                        mobile_phone="New 9866662325", work_phone="New 123123123", secondary_phone="New 1414141414",
+                        email="glebsarkisov@gmail.com", email2="asdasdasd@com",
+                        email3="wdwdwdwdwdw@gmail.com"))
     all_contacts = app.contact.get_contacts_list()
     index = randrange(len(all_contacts))
     contact_from_home_page = app.contact.get_contacts_list()[index]
