@@ -25,21 +25,20 @@ def app(request):
     browser = request.config.getoption("--browser")
     web_config = load_config(request.config.getoption("--target"))['web']
     if fixture is None or not fixture.is_valid():
-        fixture = Application(browser=browser, base_url=web_config["baseUrl"])
-    fixture.session.ensure_login(username=web_config["username"], password=web_config["password"])
+        fixture = Application(browser=browser, base_url=web_config['baseUrl'])
+    fixture.session.ensure_login(username=web_config['username'], password=web_config['password'])
     return fixture
 
 
 @pytest.fixture(scope="session")
 def db(request):
     db_config = load_config(request.config.getoption("--target"))['db']
-    dbfixture = DbFixture(host=db_config['host'], name=db_config['name'], user=db_config['user'], password=db_config['password'])
+    dbfixture = DbFixture(host=db_config['host'], name=db_config['name'], user=db_config['user'], password=db_config['password'], unix_socket=db_config['unix_socket'])
 
     def fin():
         dbfixture.destroy()
     request.addfinalizer(fin)
     return dbfixture
-
 
 
 @pytest.fixture(scope="session", autouse=True)

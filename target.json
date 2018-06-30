@@ -8,6 +8,7 @@
     "host":"localhost",
     "name":"addressbook",
     "user":"root",
-    "password":""
+    "password":"",
+    "unix_socket":"/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock"
   }
 }
