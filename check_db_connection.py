@@ -1,12 +1,12 @@
 import pymysql
+from fixture.db import DbFixture
 
-
-connection = pymysql.connect(host="localhost", unix_socket="/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock", database="addressbook", user="root", password="")
+db = DbFixture(host="localhost", unix_socket="/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock", name="addressbook", user="root", password="")
 
 try:
-    cursor = connection.cursor()
-    cursor.execute("select * from group_list")
-    for row in cursor.fetchall():
-        print(row)
+    contacts = db.get_contact_list()
+    for contact in contacts:
+        print(contact)
+    print(len(contacts))
 finally:
-    connection.close()
+    db.destroy()
