@@ -1,18 +1,18 @@
 from model.group import Group
-from random import randrange
+import random
 
 
-def test_edit_some_group_name(app):
-    group = Group(name="Some name")
-    if app.group.count() == 0:
+def test_edit_some_group_name(app, db, check_ui):
+    group = Group(name="Some name", header="Some header", footer="Some footer")
+    if len(db.get_group_list()) == 0:
         app.group.create(group)
-    old_groups = app.group.get_group_list()
-    index = randrange(len(old_groups))
-    group.id = old_groups[index].id
-    app.group.modify_group_by_index(index, group)
-    assert len(old_groups) == app.group.count()
-    new_groups = app.group.get_group_list()
-    old_groups[index] = group
+    old_groups = db.get_group_list()
+    random_group = random.choice(old_groups)
+    app.group.modify_group_by_id(random_group.id, group)
+    # assert len(old_groups) == app.group.count()
+    new_groups = db.get_group_list()
+    # need to select group with same id from the list of old groups and replace with already edited group
+    old_groups(????)
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
