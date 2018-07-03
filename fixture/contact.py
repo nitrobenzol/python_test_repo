@@ -75,10 +75,6 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
-    def select_contact_by_id(self, id):
-        wd = self.app.wd
-        wd.find_element_by_css_selector("input[value='%s']" % id).click()
-
     def edit_first_contact(self):
         self.edit_contact_by_index(0)
 
@@ -90,11 +86,32 @@ class ContactHelper:
         # cell = row.find_elements_by_tag_name("td")[7]
         # cell.find_element_by_tag_name("a").click()
 
+    def open_contact_to_edit_by_id(self, id):
+        wd = self.app.wd
+        self.open_home_page()
+        # wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        wd.find_element_by_xpath("//a[contains(@href, %s) and contains(@href, 'edit.php?id=')]" % id).click()
+        # row = wd.find_elements_by_name("entry")
+        # how to select element with proper id we need??
+        # wd.find_element_by_xpath("//a[@href='edit.php?id=''%s']" % id).click()
+        # cell = row.find_elements_by_tag_name("td")[7]
+        # cell.find_element_by_tag_name("a").click()
+
     def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_home_page()
         # click Edit button
         self.open_contact_to_edit_by_index(index)
+        self.fill_contact_form(contact)
+        # submit changes - home page will be opened right after automatically
+        wd.find_element_by_name("update").click()
+        self.contact_cache = None
+
+    def edit_contact_by_id(self, id, contact):
+        wd = self.app.wd
+        self.open_home_page()
+        # click Edit button
+        self.open_contact_to_edit_by_id(id)
         self.fill_contact_form(contact)
         # submit changes - home page will be opened right after automatically
         wd.find_element_by_name("update").click()
