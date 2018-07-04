@@ -12,7 +12,6 @@ def test_edit_some_contact(app, db, check_ui):
     old_contacts = db.get_contact_list()
     random_contact = random.choice(old_contacts)
     app.contact.edit_contact_by_id(random_contact.id, contact)
-    time.sleep(5)
     new_contacts = db.get_contact_list()
     contact.id = random_contact.id
     old_contacts.remove(random_contact)
