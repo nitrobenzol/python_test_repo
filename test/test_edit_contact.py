@@ -1,6 +1,5 @@
 from model.contact import Contact
 import random
-import time
 
 
 def test_edit_some_contact(app, db, check_ui):
