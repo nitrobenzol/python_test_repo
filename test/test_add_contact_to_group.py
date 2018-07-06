@@ -29,3 +29,4 @@ def test_add_contact_to_group(app, db):
     for contact in contacts_in_group:
         if contact.id == random_contact.id:
             assert True
+    print("You added " + str(random_contact) + " to " + str(random_group))

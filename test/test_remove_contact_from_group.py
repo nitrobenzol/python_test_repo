@@ -21,7 +21,6 @@ def test_remove_contact_from_group(app, db):
     # select random group
     group_list_db = db.get_group_list()
     random_group = random.choice(group_list_db)
-    # PROBLEM HERE: even deleted contacts existing in group might appear in group from db - need to resolve this
     contacts_in_group = orm.get_contacts_in_group(random_group)
     # if selected group has no contacts, adding random contact to it and then deleting
     contact_list = db.get_contact_list()
@@ -32,7 +31,7 @@ def test_remove_contact_from_group(app, db):
         for contact in contacts_in_group:
             if contact.id != random_contact.id:
                 assert True
-                print(random_contact)
+        print("You added and then removed " + str(random_contact) + " from " + str(random_group))
     # if selected group has some contacts, deleting random contact from that group
     else:
         random_contact_from_group = random.choice(contacts_in_group)
@@ -40,5 +39,4 @@ def test_remove_contact_from_group(app, db):
         for contact in contacts_in_group:
             if contact.id != random_contact_from_group.id:
                 assert True
-                print(random_contact_from_group)
-    print(random_group)
+        print("You removed " + str(random_contact_from_group) + " from " + str(random_group))
