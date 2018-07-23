@@ -1,0 +1,122 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1532281893386" stop="1532281904672">
+  <name>test.test_add_group</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1532281893386" status="passed" stop="1532281899097">
+      <name>test_add_group[None:::]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="16667-MainThread"/>
+        <label name="host" value="Air-Gleb.fritz.box"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1532281899100" status="passed" stop="1532281900191">
+      <name>test_add_group[None:nameQ:header 4f 1q&lt;FC[ZB{:footerXQW.M^(Jd7^4kY1U &gt;]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="16667-MainThread"/>
+        <label name="host" value="Air-Gleb.fritz.box"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1532281900192" status="passed" stop="1532281901189">
+      <name>test_add_group[None:namegTj l:headerr|N&amp;&lt;; ^|XR)9NFo:footermQ]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="16667-MainThread"/>
+        <label name="host" value="Air-Gleb.fritz.box"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1532281901190" status="passed" stop="1532281902214">
+      <name>test_add_group[None:name1 :headerzZl|l:footerZ8Xo6]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="16667-MainThread"/>
+        <label name="host" value="Air-Gleb.fritz.box"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1532281902216" status="failed" stop="1532281903490">
+      <name>test_add_group[None:nametD G n-z:headernE6 RWPo&lt; vnBY9sB:footerc7WY '&amp;X5JN]</name>
+      <failure>
+        <message>AssertionError: assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]
+  Left contains more items, first extra item: None:nametD G n-z:headernE6 RWPo&lt; vnBY9sB:footerc7WY '&amp;X5JN
+  Use -v to get the full diff</message>
+        <stack-trace>app = &lt;fixture.application.Application object at 0x1049245f8&gt;
+db = &lt;fixture.db.DbFixture object at 0x104924da0&gt;
+json_groups = None:nametD G n-z:headernE6 RWPo&lt; vnBY9sB:footerc7WY '&amp;X5JN
+check_ui = False
+
+    def test_add_group(app, db, json_groups, check_ui):
+        group = json_groups
+        old_groups = db.get_group_list()
+        app.group.create(group)
+        new_groups = db.get_group_list()
+        old_groups.append(group)
+&gt;       assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+E       AssertionError: assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]
+E         Left contains more items, first extra item: None:nametD G n-z:headernE6 RWPo&lt; vnBY9sB:footerc7WY '&amp;X5JN
+E         Use -v to get the full diff
+
+test/test_add_group.py:10: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="16667-MainThread"/>
+        <label name="host" value="Air-Gleb.fritz.box"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1532281903492" status="failed" stop="1532281904672">
+      <name>test_add_group[None:name\\O3S:headeruxD$ P| |j9_R%M:footer#`yc&amp;w WQ{U&lt; a7M H]</name>
+      <failure>
+        <message>AssertionError: assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]
+  At index 26 diff: None:name\O3S:headeruxD$ P| |j9_R%M:footer#`yc&amp;w WQ{U&lt; a7M H != 379:nameO3S:headeruxD$ P| |j9_R%M:footer#`yc&amp;w WQ{U&lt; a7M H
+  Use -v to get the full diff</message>
+        <stack-trace>app = &lt;fixture.application.Application object at 0x1049245f8&gt;
+db = &lt;fixture.db.DbFixture object at 0x104924da0&gt;
+json_groups = None:name\O3S:headeruxD$ P| |j9_R%M:footer#`yc&amp;w WQ{U&lt; a7M H
+check_ui = False
+
+    def test_add_group(app, db, json_groups, check_ui):
+        group = json_groups
+        old_groups = db.get_group_list()
+        app.group.create(group)
+        new_groups = db.get_group_list()
+        old_groups.append(group)
+&gt;       assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+E       assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]
+E         At index 26 diff: None:name\O3S:headeruxD$ P| |j9_R%M:footer#`yc&amp;w WQ{U&lt; a7M H != 379:nameO3S:headeruxD$ P| |j9_R%M:footer#`yc&amp;w WQ{U&lt; a7M H
+E         Use -v to get the full diff
+
+test/test_add_group.py:10: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="16667-MainThread"/>
+        <label name="host" value="Air-Gleb.fritz.box"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

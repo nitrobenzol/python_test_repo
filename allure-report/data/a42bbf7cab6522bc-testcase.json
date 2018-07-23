@@ -1,0 +1,50 @@
+{
+  "uid" : "a42bbf7cab6522bc",
+  "name" : "test_add_group[None:::]",
+  "title" : "Test add group [None:::]",
+  "time" : {
+    "start" : 1532281893386,
+    "stop" : 1532281899097,
+    "duration" : 5711
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "1a034f3a6c3e65e0",
+    "name" : "test.test_add_group",
+    "title" : "Test add group"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "thread",
+    "value" : "16667-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "suite-name",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "host",
+    "value" : "Air-Gleb.fritz.box"
+  } ],
+  "parameters" : [ ]
+}

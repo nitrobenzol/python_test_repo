@@ -1,0 +1,47 @@
+{
+  "defectsList" : [ {
+    "title" : "Product defects",
+    "status" : "FAILED",
+    "defects" : [ {
+      "uid" : "3c7dacfd4dab9b1",
+      "failure" : {
+        "message" : "AssertionError: assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]\n  Left contains more items, first extra item: None:nametD G n-z:headernE6 RWPo< vnBY9sB:footerc7WY '&X5JN\n  Use -v to get the full diff",
+        "stackTrace" : "app = <fixture.application.Application object at 0x1049245f8>\ndb = <fixture.db.DbFixture object at 0x104924da0>\njson_groups = None:nametD G n-z:headernE6 RWPo< vnBY9sB:footerc7WY '&X5JN\ncheck_ui = False\n\n    def test_add_group(app, db, json_groups, check_ui):\n        group = json_groups\n        old_groups = db.get_group_list()\n        app.group.create(group)\n        new_groups = db.get_group_list()\n        old_groups.append(group)\n>       assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)\nE       AssertionError: assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]\nE         Left contains more items, first extra item: None:nametD G n-z:headernE6 RWPo< vnBY9sB:footerc7WY '&X5JN\nE         Use -v to get the full diff\n\ntest/test_add_group.py:10: AssertionError"
+      },
+      "testCases" : [ {
+        "uid" : "4771317198f2fa2b",
+        "name" : "test_add_group[None:nametD G n-z:headernE6 RWPo< vnBY9sB:footerc7WY '&X5JN]",
+        "title" : "Test add group [None:nametD G n-z:headernE6 RWPo< vnBY9sB:footerc7WY '&X5JN]",
+        "time" : {
+          "start" : 1532281902216,
+          "stop" : 1532281903490,
+          "duration" : 1274
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      } ]
+    }, {
+      "uid" : "5e91ecfdec4ef2ae",
+      "failure" : {
+        "message" : "AssertionError: assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]\n  At index 26 diff: None:name\\O3S:headeruxD$ P| |j9_R%M:footer#`yc&w WQ{U< a7M H != 379:nameO3S:headeruxD$ P| |j9_R%M:footer#`yc&w WQ{U< a7M H\n  Use -v to get the full diff",
+        "stackTrace" : "app = <fixture.application.Application object at 0x1049245f8>\ndb = <fixture.db.DbFixture object at 0x104924da0>\njson_groups = None:name\\O3S:headeruxD$ P| |j9_R%M:footer#`yc&w WQ{U< a7M H\ncheck_ui = False\n\n    def test_add_group(app, db, json_groups, check_ui):\n        group = json_groups\n        old_groups = db.get_group_list()\n        app.group.create(group)\n        new_groups = db.get_group_list()\n        old_groups.append(group)\n>       assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)\nE       assert [352:gergrgre...terZ8Xo6, ...] == [352:gergrgree...terZ8Xo6, ...]\nE         At index 26 diff: None:name\\O3S:headeruxD$ P| |j9_R%M:footer#`yc&w WQ{U< a7M H != 379:nameO3S:headeruxD$ P| |j9_R%M:footer#`yc&w WQ{U< a7M H\nE         Use -v to get the full diff\n\ntest/test_add_group.py:10: AssertionError"
+      },
+      "testCases" : [ {
+        "uid" : "e9ca9304d326f6ab",
+        "name" : "test_add_group[None:name\\\\O3S:headeruxD$ P| |j9_R%M:footer#`yc&w WQ{U< a7M H]",
+        "title" : "Test add group [None:name\\\\O3S:headeruxD$ P| |j9_R%M:footer#`yc&w WQ{U< a7M H]",
+        "time" : {
+          "start" : 1532281903492,
+          "stop" : 1532281904672,
+          "duration" : 1180
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      } ]
+    } ]
+  }, {
+    "title" : "Test defects",
+    "status" : "BROKEN",
+    "defects" : [ ]
+  } ]
+}
