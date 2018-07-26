@@ -3,10 +3,10 @@ from model.group import Group
 from fixture.orm import ORMFixture
 import random
 
-orm = ORMFixture(host="localhost", unix_socket="/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock", name="addressbook", user="root", password="")
+#orm = ORMFixture(host="localhost", unix_socket="/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock", name="addressbook", user="root", password="")
 
 
-def test_remove_contact_from_group(app, db):
+def test_remove_contact_from_group(app, db, orm):
     # ensure there is at least 1 contact in app
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(first_name="New Gleb", last_name="New Sarkisov", middle_name="New Igorevich",

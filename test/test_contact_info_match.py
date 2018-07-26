@@ -26,7 +26,7 @@ def test_contact_info_match(app, db):
 
 
 def clear_for_phones(s):
-    return re.sub("[() -.]", "", s)
+    return re.sub("[() -./]", "", s)
 
 
 def merge_phones_like_on_home_page(contact):
